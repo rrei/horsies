@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/menus/creation/horsie-creation-menu.gd" type="Script" id=1]
+
+[node name="horsie-creation-menu" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 320.0
+margin_bottom = 213.0
+rect_scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+colors = [ Color( 0, 0.647059, 0.572549, 1 ), Color( 0.65098, 0, 0, 1 ), Color( 0.917647, 0.796078, 0, 1 ), Color( 0.411765, 0.960784, 0, 1 ), Color( 0, 0.219608, 0.635294, 1 ), Color( 0.458824, 0.156863, 1, 1 ), Color( 1, 0.203922, 0.968627, 1 ), Color( 1, 0.235294, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 272.0
+margin_right = 528.0
+margin_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 256, 0 )
+hint_tooltip = "Horsie name"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+clear_button_enabled = true
+placeholder_text = "My furst horsie name"
+placeholder_alpha = 0.25
+caret_blink = true
+caret_blink_speed = 0.5

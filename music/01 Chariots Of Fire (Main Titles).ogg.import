@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/01 Chariots Of Fire (Main Titles).ogg-6a0e29f8de7b9d98f1ff2c5a64c13c6c.oggstr"
+
+[deps]
+
+source_file="res://music/01 Chariots Of Fire (Main Titles).ogg"
+dest_files=[ "res://.import/01 Chariots Of Fire (Main Titles).ogg-6a0e29f8de7b9d98f1ff2c5a64c13c6c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
