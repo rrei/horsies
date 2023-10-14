@@ -3,5 +3,4 @@
 [ext_resource path="res://ui/LLPIXEL3.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 12
 font_data = ExtResource( 1 )

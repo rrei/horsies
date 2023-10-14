@@ -17,7 +17,7 @@ colors = [ Color( 0, 0.647059, 0.572549, 1 ), Color( 0.65098, 0, 0, 1 ), Color( 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = 272.0
 margin_right = 528.0
-margin_bottom = 24.0
+margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 256, 0 )

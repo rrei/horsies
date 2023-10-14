@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://terrain/track-curve.png" type="Texture" id=1]
 [ext_resource path="res://terrain/track-straight.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://ui/font.tres" type="DynamicFont" id=20]
 [ext_resource path="res://music/01 Chariots Of Fire (Main Titles).ogg" type="AudioStream" id=21]
 [ext_resource path="res://ui/font12.tres" type="DynamicFont" id=22]
+[ext_resource path="res://music/William Tell Overture Finale.ogg" type="AudioStream" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "countdown"
@@ -124,13 +125,16 @@ tracks/0/keys = {
 2/z_index = 0
 
 [node name="world" type="YSort"]
+sort_enabled = false
 script = ExtResource( 15 )
-n_laps = 3
 
 [node name="utils" type="Node" parent="."]
 
 [node name="music" type="AudioStreamPlayer" parent="utils"]
 stream = ExtResource( 21 )
+
+[node name="turbo_music" type="AudioStreamPlayer" parent="utils"]
+stream = ExtResource( 23 )
 
 [node name="tween" type="Tween" parent="utils"]
 
@@ -151,9 +155,6 @@ rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 20 )
 bbcode_enabled = true
 fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="countdown" type="Label" parent="gui"]
 anchor_left = 0.5
@@ -178,9 +179,6 @@ margin_right = 120.0
 margin_bottom = 184.0
 custom_fonts/normal_font = ExtResource( 22 )
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="laps" type="Label" parent="gui"]
 anchor_left = 1.0
@@ -934,10 +932,12 @@ curve = ExtResource( 17 )
 [node name="flippers" type="Node2D" parent="track"]
 
 [node name="flipper" parent="track/flippers" instance=ExtResource( 16 )]
-position = Vector2( 74, 89 )
+position = Vector2( 68, 92 )
+rotation = 0.7587
 
 [node name="flipper2" parent="track/flippers" instance=ExtResource( 16 )]
 position = Vector2( 408, 230 )
+rotation = 0.564643
 
 [node name="PathFollow2D" type="PathFollow2D" parent="track"]
 position = Vector2( 172, 239 )
@@ -948,49 +948,55 @@ position = Vector2( 172, 239 )
 position = Vector2( 110, 190 )
 tint = Color( 0.321569, 0.227451, 0.027451, 1 )
 
-[node name="hidden_horsies" type="Node2D" parent="."]
-visible = false
+[node name="Diogo" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 137, 216 )
 
-[node name="Alex" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 110, 190 )
-tint = Color( 1, 0, 0, 1 )
-
-[node name="Marlene" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 147, 196 )
-tint = Color( 0.960784, 0.945098, 0.0117647, 1 )
-
-[node name="João" parent="hidden_horsies" instance=ExtResource( 4 )]
+[node name="João" parent="horsies" instance=ExtResource( 4 )]
 position = Vector2( 110, 190 )
 tint = Color( 0.0784314, 1, 0, 1 )
 
-[node name="Vasco" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 110, 190 )
-tint = Color( 0.137255, 1, 0.878431, 1 )
-
-[node name="Caetano" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 110, 190 )
-tint = Color( 0, 0.976471, 1, 1 )
-
-[node name="Diogo" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 137, 216 )
-
-[node name="Catarino" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 110, 190 )
-tint = Color( 0, 0.788235, 1, 1 )
-
-[node name="Rodrigo" parent="hidden_horsies" instance=ExtResource( 4 )]
+[node name="Rodrigo" parent="horsies" instance=ExtResource( 4 )]
 position = Vector2( 110, 190 )
 tint = Color( 0.223529, 0.596078, 0.101961, 1 )
 
-[node name="Fátima" parent="hidden_horsies" instance=ExtResource( 4 )]
+[node name="Nuno" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 110, 190 )
+tint = Color( 0.137255, 0.211765, 1, 1 )
+
+[node name="Alex" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 110, 190 )
+tint = Color( 1, 0, 0, 1 )
+
+[node name="Malafas" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 124, 206 )
+scale = Vector2( 0.7, 0.7 )
+tint = Color( 0.898039, 0.301961, 0.0392157, 1 )
+
+[node name="Caetano" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 110, 190 )
+tint = Color( 0, 0.976471, 1, 1 )
+
+[node name="Marlene" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 147, 196 )
+tint = Color( 0.960784, 0.945098, 0.0117647, 1 )
+
+[node name="Catarino" parent="horsies" instance=ExtResource( 4 )]
+position = Vector2( 110, 190 )
+tint = Color( 0, 0.788235, 1, 1 )
+
+[node name="Fátima" parent="horsies" instance=ExtResource( 4 )]
 position = Vector2( 147, 196 )
 tint = Color( 1, 0, 0.631373, 1 )
 
-[node name="Malafas" parent="hidden_horsies" instance=ExtResource( 4 )]
-position = Vector2( 124, 206 )
-scale = Vector2( 0.5, 0.5 )
-tint = Color( 0.898039, 0.301961, 0.0392157, 1 )
-
-[node name="Nuno" parent="hidden_horsies" instance=ExtResource( 4 )]
+[node name="Vasco" parent="horsies" instance=ExtResource( 4 )]
 position = Vector2( 110, 190 )
-tint = Color( 0.137255, 0.211765, 1, 1 )
+tint = Color( 0.137255, 1, 0.878431, 1 )
+
+[node name="hidden_horsies" type="Node2D" parent="."]
+visible = false
+
+[node name="turbo_timer" type="Timer" parent="."]
+wait_time = 1.618
+one_shot = true
+
+[connection signal="timeout" from="turbo_timer" to="." method="_on_turbo_timer_timeout"]

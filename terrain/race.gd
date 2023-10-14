@@ -10,7 +10,7 @@ func _ready():
 	self.process_priority = +1  # to process this node after horsies
 
 	var tree := self.get_tree()
-	tree.paused = true
+#	tree.paused = true
 
 	var track: Path2D = $track
 	var horsies := $horsies.get_children()
@@ -24,7 +24,10 @@ func _ready():
 		self.ranks[horsie] = 1
 
 	$gui/anim.play("countdown")
-	$utils/music.play()
+	if globals.turbo_mode:
+		$utils/turbo_music.play()
+	else:
+		$utils/music.play()
 
 	# Display status line every second.
 	while true:
@@ -37,6 +40,7 @@ func _ready():
 
 
 func _process(delta):
+
 	# Update horsie progress.
 	var horsies := $horsies.get_children()
 	for horsie in horsies:
@@ -48,6 +52,7 @@ func _process(delta):
 	var progress := -1.0
 	self.ranks.clear()
 	for i in range(horsies.size()):
+		horsies[i].is_last = false
 		var horsie = horsies[i]
 		var horsie_progress = self.progress[horsie]
 		if horsie_progress != progress:
@@ -55,7 +60,9 @@ func _process(delta):
 			rank = i + 1
 		horsie.rank = rank
 		self.ranks[horsie] = rank
-
+		if rank == horsies.size() and laps[horsies[i]]>0:
+			horsies[i].is_last = true
+			
 	# Update ranks and laps UI.
 	var ranks := PoolStringArray()
 	var current_lap := 0
@@ -144,3 +151,9 @@ func finish_race():
 		0.01 * text.length(), Tween.TRANS_LINEAR
 	)
 	tween.start()
+
+
+func _on_turbo_timer_timeout():
+	var horsies := $horsies.get_children()
+	for h in horsies:
+		h.in_turbo = false

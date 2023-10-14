@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://horsie/horsie.gd" type="Script" id=1]
 [ext_resource path="res://horsie/horsie_bw.png" type="Texture" id=2]
 [ext_resource path="res://horsie/smoke.png" type="Texture" id=3]
+[ext_resource path="res://horsie/rater.png" type="Texture" id=4]
+[ext_resource path="res://sfx/fart5.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/fart3.wav" type="AudioStream" id=6]
+[ext_resource path="res://sfx/fart1.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/fart2.wav" type="AudioStream" id=8]
+[ext_resource path="res://sfx/fart4.wav" type="AudioStream" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.0
@@ -56,6 +62,26 @@ scale_random = 1.0
 scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 231, 275 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 231, 0, 231, 275 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 462, 0, 231, 275 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [node name="horsie" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -65,6 +91,11 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -17, -17 )
+
+[node name="face" type="Sprite" parent="sprite"]
+position = Vector2( 5, 2.5 )
+rotation = 0.218166
+offset = Vector2( 0, -32 )
 
 [node name="follow" type="PathFollow2D" parent="."]
 position = Vector2( 0, -4.76837e-07 )
@@ -96,3 +127,33 @@ randomness = 0.25
 local_coords = false
 process_material = SubResource( 7 )
 texture = ExtResource( 3 )
+
+[node name="turbo_sounds" type="Node" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="turbo_sounds"]
+stream = ExtResource( 7 )
+volume_db = 8.18
+
+[node name="2" type="AudioStreamPlayer2D" parent="turbo_sounds"]
+stream = ExtResource( 8 )
+
+[node name="3" type="AudioStreamPlayer2D" parent="turbo_sounds"]
+stream = ExtResource( 6 )
+volume_db = 4.285
+
+[node name="4" type="AudioStreamPlayer2D" parent="turbo_sounds"]
+stream = ExtResource( 9 )
+volume_db = 5.843
+
+[node name="5" type="AudioStreamPlayer2D" parent="turbo_sounds"]
+stream = ExtResource( 5 )
+volume_db = 6.232
+
+[node name="turbo_flames" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( -17, -1 )
+rotation = -1.39626
+scale = Vector2( 0.05, 0.1 )
+frames = SubResource( 11 )
+frame = 2
+playing = true

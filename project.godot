@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="horsies"
-run/main_scene="res://terrain/terrain.tscn"
+run/main_scene="res://ui/intro/intro_menu.tscn"
 config/icon="res://icon.png"
 
 [audio]
@@ -36,6 +36,7 @@ globals="*res://utils/globals.gd"
 
 window/size/width=480
 window/size/height=320
+window/size/always_on_top=true
 window/size/test_width=960
 window/size/test_height=640
 window/vsync/vsync_via_compositor=true
