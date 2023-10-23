@@ -7,6 +7,7 @@ const MAX_SPEED := 60.0
 const TURBO_MULTIPLIER = 1.618
 
 export var tint := Color.white
+export var turbo_probability := 0.003
 
 var speed := 50.0  # pixels/second
 var acceleration := 5.0  # pixels/second^2
@@ -55,14 +56,16 @@ func setup(track: Path2D, lane: int):
 func add_face():
 	var face_texture = load("res://horsie/faces/" + str(self.name) + ".png")
 	$sprite/face.texture = face_texture
+	if self.name == "Fátima": # her face is quite long...
+		$sprite/face.offset = Vector2(4, -48)
 
 func pump_the_horsie():
 	horsie_ketchup_multiplier = 5.0
 	horsie_speed_variation = 20.0
 	
 func can_go_turbo():
-	if globals.turbo_mode:
-		if is_last and turbo_timer.is_stopped() and globals.rng.randf() < 0.001:
+	if globals.turbo_mode and Engine.get_frames_drawn() > 2000: # wait till the end of the song's intro to start turboing...
+		if is_last and turbo_timer.is_stopped() and globals.rng.randf() < turbo_probability:
 			in_turbo = true
 			$turbo_sounds.get_children()[globals.rng.randi_range(0,4)].play()
 			$turbo_flames.show()

@@ -60,7 +60,8 @@ func _process(delta):
 			rank = i + 1
 		horsie.rank = rank
 		self.ranks[horsie] = rank
-		if rank == horsies.size() and laps[horsies[i]]>0:
+		if rank == horsies.size():
+#			 and laps[horsies[i]]>0:
 			horsies[i].is_last = true
 			
 	# Update ranks and laps UI.
@@ -76,6 +77,7 @@ func _process(delta):
 
 	if current_lap > 0:
 		$gui/ranks.bbcode_text = ranks.join("\n")
+		$gui/ranks.set_fit_content_height(true)
 		if current_lap <= self.n_laps:
 			$gui/laps.text = "Lap {0} of {1}".format([current_lap, self.n_laps])
 		else:
@@ -111,6 +113,7 @@ func finish_race():
 			rank1_horsies.append(horsie)
 	assert(rank1_horsies.size() > 0)
 	var winner = rank1_horsies[globals.rng.randi() % rank1_horsies.size()]
+	winner.z_index = 10 # bring winner to the foreground
 
 	var camera_pos := camera.global_position
 	self.remove_child(camera)

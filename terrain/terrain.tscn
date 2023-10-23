@@ -127,6 +127,7 @@ tracks/0/keys = {
 [node name="world" type="YSort"]
 sort_enabled = false
 script = ExtResource( 15 )
+n_laps = 1
 
 [node name="utils" type="Node" parent="."]
 
