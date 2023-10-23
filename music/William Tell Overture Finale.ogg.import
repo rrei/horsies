@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/William Tell Overture Finale.ogg-b1fc83193534fe2b4067a7daff5908cf.oggstr"
+
+[deps]
+
+source_file="res://music/William Tell Overture Finale.ogg"
+dest_files=[ "res://.import/William Tell Overture Finale.ogg-b1fc83193534fe2b4067a7daff5908cf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

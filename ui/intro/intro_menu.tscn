@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/LLPIXEL3.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://horsie/horsie.png" type="Texture" id=4]
+[ext_resource path="res://ui/intro/intro_menu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+outline_size = 18
+font_data = ExtResource( 1 )
+
+[node name="intro_menu" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 11.9775, 8.05409 )
+color = Color( 0.372549, 0.333333, 0.0392157, 0.588235 )
+
+[node name="sprite" type="Sprite" parent="background"]
+position = Vector2( 31.4791, 11.9801 )
+scale = Vector2( -0.458, 0.458 )
+texture = ExtResource( 4 )
+
+[node name="turbo_label" type="Label" parent="."]
+margin_left = 59.0
+margin_top = 97.0
+margin_right = 283.0
+margin_bottom = 139.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Turbo Mode ?"
+
+[node name="yes_button" type="Button" parent="."]
+margin_left = 68.0
+margin_top = 228.0
+margin_right = 182.0
+margin_bottom = 259.0
+rect_scale = Vector2( 1.30887, 1.21386 )
+custom_colors/font_color = Color( 1, 0.976471, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Oh Yeah"
+expand_icon = true
+
+[node name="no_button" type="Button" parent="."]
+margin_left = 276.0
+margin_top = 228.0
+margin_right = 390.0
+margin_bottom = 259.0
+rect_scale = Vector2( 1.30887, 1.21386 )
+custom_colors/font_color = Color( 1, 0.976471, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "No, thanks"
+expand_icon = true
+
+[connection signal="pressed" from="yes_button" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="no_button" to="." method="_on_no_button_pressed"]
